@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
+import { WEB_BASE_PATH } from "./src/lib/basePath";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const host = process.env.TAURI_DEV_HOST;
@@ -84,6 +85,7 @@ function honchoApiProxy(): Plugin {
 }
 
 export default defineConfig({
+	base: WEB_BASE_PATH,
 	clearScreen: false,
 	plugins: [tanstackRouter({ autoCodeSplitting: true }), react(), honchoApiProxy(), tailwindcss()],
 	define: {
