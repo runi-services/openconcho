@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { InstancesManager } from "@/components/settings/InstancesManager";
 import { useInstances } from "@/hooks/useInstances";
+import { PRODUCT_LOGO_PATH, PRODUCT_NAME } from "@/lib/brand";
 
 export const Route = createFileRoute("/settings")({
 	component: SettingsPage,
@@ -25,13 +26,13 @@ function SettingsPage() {
 			>
 				<div className="mb-8 text-center">
 					<img
-						src="/favicon.svg"
-						alt="OpenConcho"
+						src={PRODUCT_LOGO_PATH}
+						alt={PRODUCT_NAME}
 						className="w-14 h-14 rounded-2xl mx-auto mb-4"
 						style={{ boxShadow: "0 0 32px rgba(99,102,241,0.35)" }}
 					/>
 					<h1 className="text-2xl font-semibold tracking-tight" style={{ color: "var(--text-1)" }}>
-						OpenConcho
+						{PRODUCT_NAME}
 					</h1>
 					<p className="text-sm mt-1" style={{ color: "var(--text-3)" }}>
 						{isFirstRun

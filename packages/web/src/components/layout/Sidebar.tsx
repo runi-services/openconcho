@@ -27,6 +27,7 @@ import { useHealthStatus } from "@/hooks/useHealthStatus";
 import { useInstances } from "@/hooks/useInstances";
 import { useMetadata } from "@/hooks/useMetadata";
 import { useTheme } from "@/hooks/useTheme";
+import { PRODUCT_LOGO_PATH, PRODUCT_NAME } from "@/lib/brand";
 import { COLOR } from "@/lib/constants";
 
 const TOP_NAV = [
@@ -131,8 +132,8 @@ export function Sidebar() {
 			<div className="px-3 sm:px-5 py-5" style={{ borderBottom: "1px solid var(--border)" }}>
 				<div className="flex items-center gap-2.5 justify-center sm:justify-start">
 					<img
-						src="/favicon.svg"
-						alt="OpenConcho"
+						src={PRODUCT_LOGO_PATH}
+						alt={PRODUCT_NAME}
 						className="w-7 h-7 rounded-lg shrink-0"
 						style={{ boxShadow: `0 0 16px ${COLOR.accentGlow}` }}
 					/>
@@ -141,7 +142,7 @@ export function Sidebar() {
 							className="font-semibold text-sm tracking-tight"
 							style={{ color: "var(--text-1)" }}
 						>
-							OpenConcho
+							{PRODUCT_NAME}
 						</span>
 					</div>
 				</div>

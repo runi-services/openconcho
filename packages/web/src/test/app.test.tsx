@@ -35,6 +35,16 @@ describe("first load with no config", () => {
 			await screen.findByText(/Connect to Honcho Cloud or your self-hosted instance/i),
 		).toBeInTheDocument();
 	});
+
+	it("presents the Runi Ops brand while retaining shell controls", async () => {
+		localStorage.clear();
+		renderAt("/settings");
+
+		expect((await screen.findAllByText("Runi Ops")).length).toBeGreaterThanOrEqual(2);
+		expect(screen.getByTitle("Enable demo mode")).toBeInTheDocument();
+		expect(screen.getByTitle("Show raw metadata")).toBeInTheDocument();
+		expect(screen.getByTitle(/Switch to (light|dark) mode/)).toBeInTheDocument();
+	});
 });
 
 describe("Sidebar/useDemo availability across routes", () => {
