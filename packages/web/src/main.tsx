@@ -4,6 +4,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { DemoProvider } from "./context/DemoContext";
 import { MetadataProvider } from "./context/MetadataContext";
+import { WEB_BASE_PATH } from "./lib/basePath";
 import { initDeepLinks } from "./lib/deep-link";
 import { routeTree } from "./routeTree.gen";
 import "./index.css";
@@ -19,6 +20,7 @@ const queryClient = new QueryClient({
 
 const router = createRouter({
 	routeTree,
+	basepath: WEB_BASE_PATH,
 	defaultPreload: "intent",
 	scrollRestoration: true,
 });
