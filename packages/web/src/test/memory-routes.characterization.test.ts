@@ -34,3 +34,11 @@ describe("Memory route baseline before the Runi Ops shell migration", () => {
 		expect("/workspaces/$workspaceId/memory" in router.routesByPath).toBe(false);
 	});
 });
+
+describe("Runi Ops domain route baseline", () => {
+	for (const path of ["/agents", "/resources", "/telemetry", "/governance"] as const) {
+		it(`registers the ${path} shell route`, () => {
+			expect(router.routesByPath[path]).toBeDefined();
+		});
+	}
+});

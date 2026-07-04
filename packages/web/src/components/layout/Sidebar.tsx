@@ -2,20 +2,22 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Link, useMatchRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-	Boxes,
+	Activity,
+	Bot,
 	Braces,
+	BrainCircuit,
 	Check,
 	ChevronRight,
 	ChevronsUpDown,
+	Database,
 	Eye,
 	EyeOff,
-	Layers,
 	LayoutDashboard,
 	Lightbulb,
 	MessageSquare,
 	Moon,
 	MoonStar,
-	Settings,
+	ShieldCheck,
 	Sun,
 	Users,
 	Webhook,
@@ -31,10 +33,12 @@ import { PRODUCT_LOGO_PATH, PRODUCT_NAME } from "@/lib/brand";
 import { COLOR } from "@/lib/constants";
 
 const TOP_NAV = [
-	{ to: "/" as const, label: "Dashboard", icon: LayoutDashboard, exact: true },
-	{ to: "/workspaces" as const, label: "Workspaces", icon: Boxes, exact: false },
-	{ to: "/seed-kits" as const, label: "Seed Kits", icon: Layers, exact: false },
-	{ to: "/settings" as const, label: "Settings", icon: Settings, exact: false },
+	{ to: "/" as const, label: "Overview", icon: LayoutDashboard, exact: true },
+	{ to: "/workspaces" as const, label: "Memory", icon: BrainCircuit, exact: false },
+	{ to: "/agents" as const, label: "Agents", icon: Bot, exact: false },
+	{ to: "/resources" as const, label: "Resources", icon: Database, exact: false },
+	{ to: "/telemetry" as const, label: "Telemetry", icon: Activity, exact: false },
+	{ to: "/governance" as const, label: "Governance", icon: ShieldCheck, exact: false },
 ];
 
 const WORKSPACE_SECTIONS = [

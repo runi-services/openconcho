@@ -81,3 +81,20 @@ describe("Sidebar/useDemo availability across routes", () => {
 		expect(screen.getByTestId("demo-flag")).toBeInTheDocument();
 	});
 });
+
+describe("Runi Ops top-level navigation", () => {
+	it("exposes exactly the six approved product domains", async () => {
+		localStorage.clear();
+		renderAt("/settings");
+		await screen.findByRole("heading", { name: "Runi Ops" });
+
+		const navigation = screen.getByRole("navigation");
+		for (const name of ["Overview", "Memory", "Agents", "Resources", "Telemetry", "Governance"]) {
+			expect(navigation.querySelector(`a[title="${name}"]`)).toBeInTheDocument();
+		}
+		expect(navigation.querySelectorAll(":scope > a")).toHaveLength(6);
+		expect(navigation).not.toHaveTextContent("Dashboard");
+		expect(navigation).not.toHaveTextContent("Seed Kits");
+		expect(navigation).not.toHaveTextContent("Settings");
+	});
+});

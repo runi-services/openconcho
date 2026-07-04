@@ -10,10 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorkspacesRouteImport } from './routes/workspaces'
+import { Route as TelemetryRouteImport } from './routes/telemetry'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SeedKitsRouteImport } from './routes/seed-kits'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as GovernanceRouteImport } from './routes/governance'
 import { Route as FleetRouteImport } from './routes/fleet'
 import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorkspacesWorkspaceIdRouteImport } from './routes/workspaces_.$workspaceId'
 import { Route as DevDreamProgressRouteImport } from './routes/_dev.dream-progress'
@@ -33,6 +37,11 @@ const WorkspacesRoute = WorkspacesRouteImport.update({
   path: '/workspaces',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TelemetryRoute = TelemetryRouteImport.update({
+  id: '/telemetry',
+  path: '/telemetry',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -43,6 +52,16 @@ const SeedKitsRoute = SeedKitsRouteImport.update({
   path: '/seed-kits',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FleetRoute = FleetRouteImport.update({
   id: '/fleet',
   path: '/fleet',
@@ -51,6 +70,11 @@ const FleetRoute = FleetRouteImport.update({
 const ExploreRoute = ExploreRouteImport.update({
   id: '/explore',
   path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsRoute = AgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -131,10 +155,14 @@ const WorkspacesWorkspaceIdPeersPeerIdChatRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
   '/explore': typeof ExploreRoute
   '/fleet': typeof FleetRoute
+  '/governance': typeof GovernanceRoute
+  '/resources': typeof ResourcesRoute
   '/seed-kits': typeof SeedKitsRoute
   '/settings': typeof SettingsRoute
+  '/telemetry': typeof TelemetryRoute
   '/workspaces': typeof WorkspacesRoute
   '/dream-progress': typeof DevDreamProgressRoute
   '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
@@ -151,10 +179,14 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
   '/explore': typeof ExploreRoute
   '/fleet': typeof FleetRoute
+  '/governance': typeof GovernanceRoute
+  '/resources': typeof ResourcesRoute
   '/seed-kits': typeof SeedKitsRoute
   '/settings': typeof SettingsRoute
+  '/telemetry': typeof TelemetryRoute
   '/workspaces': typeof WorkspacesRoute
   '/dream-progress': typeof DevDreamProgressRoute
   '/workspaces/$workspaceId': typeof WorkspacesWorkspaceIdRoute
@@ -172,10 +204,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agents': typeof AgentsRoute
   '/explore': typeof ExploreRoute
   '/fleet': typeof FleetRoute
+  '/governance': typeof GovernanceRoute
+  '/resources': typeof ResourcesRoute
   '/seed-kits': typeof SeedKitsRoute
   '/settings': typeof SettingsRoute
+  '/telemetry': typeof TelemetryRoute
   '/workspaces': typeof WorkspacesRoute
   '/_dev/dream-progress': typeof DevDreamProgressRoute
   '/workspaces_/$workspaceId': typeof WorkspacesWorkspaceIdRoute
@@ -194,10 +230,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/agents'
     | '/explore'
     | '/fleet'
+    | '/governance'
+    | '/resources'
     | '/seed-kits'
     | '/settings'
+    | '/telemetry'
     | '/workspaces'
     | '/dream-progress'
     | '/workspaces/$workspaceId'
@@ -214,10 +254,14 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/agents'
     | '/explore'
     | '/fleet'
+    | '/governance'
+    | '/resources'
     | '/seed-kits'
     | '/settings'
+    | '/telemetry'
     | '/workspaces'
     | '/dream-progress'
     | '/workspaces/$workspaceId'
@@ -234,10 +278,14 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/agents'
     | '/explore'
     | '/fleet'
+    | '/governance'
+    | '/resources'
     | '/seed-kits'
     | '/settings'
+    | '/telemetry'
     | '/workspaces'
     | '/_dev/dream-progress'
     | '/workspaces_/$workspaceId'
@@ -255,10 +303,14 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentsRoute: typeof AgentsRoute
   ExploreRoute: typeof ExploreRoute
   FleetRoute: typeof FleetRoute
+  GovernanceRoute: typeof GovernanceRoute
+  ResourcesRoute: typeof ResourcesRoute
   SeedKitsRoute: typeof SeedKitsRoute
   SettingsRoute: typeof SettingsRoute
+  TelemetryRoute: typeof TelemetryRoute
   WorkspacesRoute: typeof WorkspacesRoute
   DevDreamProgressRoute: typeof DevDreamProgressRoute
   WorkspacesWorkspaceIdRoute: typeof WorkspacesWorkspaceIdRoute
@@ -283,6 +335,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkspacesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/telemetry': {
+      id: '/telemetry'
+      path: '/telemetry'
+      fullPath: '/telemetry'
+      preLoaderRoute: typeof TelemetryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -297,6 +356,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SeedKitsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/fleet': {
       id: '/fleet'
       path: '/fleet'
@@ -309,6 +382,13 @@ declare module '@tanstack/react-router' {
       path: '/explore'
       fullPath: '/explore'
       preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents': {
+      id: '/agents'
+      path: '/agents'
+      fullPath: '/agents'
+      preLoaderRoute: typeof AgentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -407,10 +487,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentsRoute: AgentsRoute,
   ExploreRoute: ExploreRoute,
   FleetRoute: FleetRoute,
+  GovernanceRoute: GovernanceRoute,
+  ResourcesRoute: ResourcesRoute,
   SeedKitsRoute: SeedKitsRoute,
   SettingsRoute: SettingsRoute,
+  TelemetryRoute: TelemetryRoute,
   WorkspacesRoute: WorkspacesRoute,
   DevDreamProgressRoute: DevDreamProgressRoute,
   WorkspacesWorkspaceIdRoute: WorkspacesWorkspaceIdRoute,
